@@ -28,14 +28,14 @@
 . /lib/lsb/init-functions
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/usr/bin/supervisord
-SUPERVISORCTL=/usr/bin/supervisorctl
+DAEMON=/opt/anaconda2/bin/supervisord
+SUPERVISORCTL=/opt/anaconda2/bin/supervisorctl
 NAME=supervisord
 DESC=supervisor
 
 test -x $DAEMON || exit 0
 
-LOGDIR=/var/log/supervisor
+LOGDIR=/home/ubuntu/log
 PIDFILE=/var/run/$NAME.pid
 DODTIME=5                   # Time to wait for the server to die, in seconds
                             # If this value is set too low you might not
@@ -46,7 +46,7 @@ DODTIME=5                   # Time to wait for the server to die, in seconds
 if [ -f /etc/default/supervisor ] ; then
 	. /etc/default/supervisor
 fi
-DAEMON_OPTS="-c /etc/supervisor/supervisord.conf $DAEMON_OPTS"
+DAEMON_OPTS="-c /opt/anaconda2/etc/supervisor/supervisord.conf $DAEMON_OPTS"
 
 set -e
 
